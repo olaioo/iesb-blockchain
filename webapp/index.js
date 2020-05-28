@@ -3,11 +3,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const app = express();
 
-const products = require("./apis/products/products.js");
-const stages = require("./apis/products/stages");
-const history = require("./apis/products/history.js");
-
-const formVeiculo = require("./apis/veiculos/formVeiculo.js");
+const information = require("./apis/information/information.js");
 
 // set default views folder
 app.set('views', __dirname + "/views");
@@ -33,31 +29,20 @@ app.get('/', (req, res) => {
 // * Auth pages * //
 app.use("/api/auth", authRoutes);
 
-// * Products pages * //
-app.get("/addProducts", products.renderAddProducts);
-app.get("/getProducts", products.renderGetProducts);
-app.get("/editProduct", products.renderEditProduct);
+// * Info pages * //
+app.get("/editInfo", information.renderEditInfo);
+app.get("/editAppInfo", information.renderEditAppInfo);
+app.get("/addAppInfo", information.renderAddAppInfo);
+app.get("/viewAvailableData", information.renderViewAvailableData);
 
-app.post("/addProducts", products.addProducts);
-app.post("/updateProduct", products.updateProduct);
-app.get("/listProducts", products.getProducts);
-app.get("/getProduct", products.getProduct);
-
-// * Estágios * //
-app.get("/addStage", stages.renderAddStage);
-app.get("/getStages", stages.renderGetStages);
-
-app.post("/addStage", stages.addStage);
-app.get("/listStages", stages.listStages);
-
-// * History * //
-app.get("/addHistory", history.renderAddHistory);
-app.post("/addHistory", history.addHistory);
-
-app.get("/getHistory", history.getHistory);
-app.get("/listHistory", history.renderGetHistory);
-
-app.get("/formVeiculo", formVeiculo.renderAddVeiculo)
+app.get("/getInformation", information.getInformation);
+app.post("/AppInfo", information.getAppInfo);
+app.get("/AppInfos", information.getAppInfos);
+app.post("/updateInformation", information.updateInformation);
+app.post("/addNewAppInfo", information.addNewAppInfo);
+app.post("/eraseDataTo", information.eraseDataTo);
+app.post("/setAvailableData", information.setAvailableDataTo);
+app.post("/decodeData", information.decodeData);
 
 const PORT = process.env.PORT || 3000;
 

@@ -8,7 +8,7 @@ const allAccountsInfoRequest = {
 };
 
 const headers = { 'Content-Type': 'application/json' };
-const ownerAccount = "0x00a1103c941fc2e1ef8177e6d9cc4657643f274b";
+const ownerAccount = "0x004ec07d2329997267ec62b4166639513386f32e";
 const MyContractJson = require(path.resolve('../dapp/build/contracts/MyContract.json'));
 const network = MyContractJson['networks']
 const contractAddress = network['8995'].address;

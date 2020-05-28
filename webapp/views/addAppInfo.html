@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
         <link rel="stylesheet" href="/css/layouts/side-menu.css">
     <!--<![endif]-->
 
-    <script src="/js/listHistory.js"></script>
+    <script src="/js/addAppInfo.js"></script>
 </head>
 <body>
 
@@ -34,12 +35,8 @@
     
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item"><a href="/api/auth/dashboard" class="pure-menu-link">Home</a></li>
-                    <li class="pure-menu-item"><a href="/addProducts" class="pure-menu-link">Cadastrar Produtos</a></li>
-                    <li class="pure-menu-item"><a href="/getProducts" class="pure-menu-link">Lista Produtos</a></li>
-                    <li class="pure-menu-item"><a href="/addStage" class="pure-menu-link">Cadastrar Etapa</a></li>
-                    <li class="pure-menu-item"><a href="/getStages" class="pure-menu-link">Lista Etapas</a></li>
-                    <li class="pure-menu-item"><a href="/addHistory" class="pure-menu-link">Cadastrar Histórico</a></li>
-                    <li class="pure-menu-item"><a href="/listHistory" class="pure-menu-link">Lista Histórico</a></li>
+                    <li class="pure-menu-item"><a href="/addAppInfo" class="pure-menu-link">Cadastrar App</a></li>
+                    <li class="pure-menu-item"><a href="/editInfo" class="pure-menu-link">Alterar Informações</a></li>    
                     <li class="pure-menu-item"><a href="/api/auth/logout" class="pure-menu-link">Sair</a></li>    
                 </ul>
             </div>
@@ -47,17 +44,37 @@
 
         <div id="main">
             <div class="header">
-                <h1> Histórico de Produtos </h1>
+                <h1> Cadastro de Apps </h1>
             </div>
 
             <div class="content" style="margin-top: 5%">
                 <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <div class="accordion" id="accordionHistory">
-                            
-                        </div>
+                    <div class="col-md-7">
+                        <form id="addAppInfo">
+                            <div class="form-group">
+                                <label for="pk">Public Key:</label>
+                                <input type="text" class="form-control" id="pk" placeholder="Chave pública do app" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" id="name" placeholder="Nome do app" required>
+                            </div>
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="emailCheck" name="requiredData" value="email">
+                                    <label class="custom-control-label" for="emailCheck">Email</label>
+                                </div>
+                                <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" id="contactNumberCheck" name="requiredData" value="contactNumber">
+                                    <label class="custom-control-label" for="contactNumberCheck">Telefone</label>
+                                </div>
+                            </div>
+        
+                            <button id="load" type="submit" class="btn btn-primary btn-block">Adicionar</button>
+                        </form>
                     </div>
                 </div>
+
             </div>
             
             

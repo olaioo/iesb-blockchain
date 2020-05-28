@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
 
     <title>PoA Dapp</title>
-    <script src="https://kit.fontawesome.com/23da8b8ca5.js"></script>
+
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
     <![endif]-->
@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="/css/layouts/side-menu.css">
     <!--<![endif]-->
 
-    <script src="/js/listProducts.js"></script>
+    <script src="/js/viewAvailableData.js"></script>
 </head>
 <body>
 
@@ -34,12 +34,8 @@
     
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item"><a href="/api/auth/dashboard" class="pure-menu-link">Home</a></li>
-                    <li class="pure-menu-item"><a href="/addProducts" class="pure-menu-link">Cadastrar Produtos</a></li>
-                    <li class="pure-menu-item"><a href="/getProducts" class="pure-menu-link">Lista Produtos</a></li>
-                    <li class="pure-menu-item"><a href="/addStage" class="pure-menu-link">Cadastrar Etapa</a></li>
-                    <li class="pure-menu-item"><a href="/getStages" class="pure-menu-link">Lista Etapas</a></li>
-                    <li class="pure-menu-item"><a href="/addHistory" class="pure-menu-link">Cadastrar Histórico</a></li>
-                    <li class="pure-menu-item"><a href="/listHistory" class="pure-menu-link">Lista Histórico</a></li>
+                    <li class="pure-menu-item"><a href="/addAppInfo" class="pure-menu-link">Cadastrar App</a></li>
+                    <li class="pure-menu-item"><a href="/editInfo" class="pure-menu-link">Alterar Informações</a></li>    
                     <li class="pure-menu-item"><a href="/api/auth/logout" class="pure-menu-link">Sair</a></li>    
                 </ul>
             </div>
@@ -47,27 +43,31 @@
 
         <div id="main">
             <div class="header">
-                <h1> Lista de Produtos </h1>
+                <h1> Informação disponível </h1>
             </div>
 
             <div class="content" style="margin-top: 5%">
                 <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <table id="products-table" class="table table-dark">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Produto</th>
-                                    <th scope="col">Preço</th>
-                                    <th scope="col">Owner</th>
-                                    <th scope="col">Options</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
+                    <div class="col-md-7">
+                        <form id="viewAvailableData">
+                            <div class="form-group">
+                                <label for="encryptedData">Informação codificada: </label>
+                                <textarea id="encryptedData" rows="4" cols="50" disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="privateKey">Chave privada: </label>
+                                <textarea id="privateKey" rows="4" cols="50" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="decodedData">Informação decodificada:</label>
+                                <textarea id="decodedData" rows="4" cols="50" disabled></textarea>
+                            </div>
+
+                            <button id="load" type="submit" class="btn btn-primary btn-block">Decifrar</button>
+                        </form>
                     </div>
                 </div>
+
             </div>
             
             

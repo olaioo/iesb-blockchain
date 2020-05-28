@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="/css/layouts/side-menu.css">
     <!--<![endif]-->
 
-    <script src="/js/addToHistory.js"></script>
+    <script src="/js/editInfo.js"></script>
 </head>
 <body>
 
@@ -34,12 +34,8 @@
     
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item"><a href="/api/auth/dashboard" class="pure-menu-link">Home</a></li>
-                    <li class="pure-menu-item"><a href="/addProducts" class="pure-menu-link">Cadastrar Produtos</a></li>
-                    <li class="pure-menu-item"><a href="/getProducts" class="pure-menu-link">Lista Produtos</a></li>
-                    <li class="pure-menu-item"><a href="/addStage" class="pure-menu-link">Cadastrar Etapa</a></li>
-                    <li class="pure-menu-item"><a href="/getStages" class="pure-menu-link">Lista Etapas</a></li>
-                    <li class="pure-menu-item"><a href="/addHistory" class="pure-menu-link">Cadastrar Histórico</a></li>
-                    <li class="pure-menu-item"><a href="/listHistory" class="pure-menu-link">Lista Histórico</a></li>
+                    <li class="pure-menu-item"><a href="/addAppInfo" class="pure-menu-link">Cadastrar App</a></li>
+                    <li class="pure-menu-item"><a href="/editInfo" class="pure-menu-link">Alterar Informações</a></li>    
                     <li class="pure-menu-item"><a href="/api/auth/logout" class="pure-menu-link">Sair</a></li>    
                 </ul>
             </div>
@@ -47,30 +43,27 @@
 
         <div id="main">
             <div class="header">
-                <h1> Cadastrar Histórico </h1>
+                <h1>Atualizar suas Informações</h1>
             </div>
 
             <div class="content" style="margin-top: 5%">
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <form id="addToSelect">
+                    <div class="col-md-7">
+                        <form id="editInfo">
                             <div class="form-group">
-                                <label for="stageSelect">Etapas: </label>
-                                <select id="stageSelect" class="custom-select">
-                                
-                                </select>
+                                <label for="emailLabel">Email: </label>
+                                <input type="text" class="form-control" id="email" placeholder="Digite seu email" required>
                             </div>
                             <div class="form-group">
-                                <label for="productSelect">Produtos: </label>
-                                <select id="productSelect" class="custom-select">
-                                
-                                </select>
+                                <label for="contactNumberLabel">Telephone: </label>
+                                <input type="number" min="1" class="form-control" id="contactNumber" placeholder="Digite seu número para contato" required>
                             </div>
-
-                            <button id="load" type="submit" class="btn btn-primary btn-block">Adicionar</button>
+        
+                            <button id="load" type="submit" class="btn btn-primary btn-block">Gravar</button>
                         </form>
                     </div>
                 </div>
+
             </div>
             
             
