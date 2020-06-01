@@ -1377,12 +1377,12 @@
     "8995": {
       "events": {},
       "links": {},
-      "address": "0x0a6A0fb50F06c8759F47FE1C22A18E2C2fd009Bf",
-      "transactionHash": "0x67ac658dbe442ffe4643521fc6f283e8f4c61284999a11ebb1c7f5f399abbe8a"
+      "address": "0x23513Fb979767AadBFEA68F588420BcDdebf0bB2",
+      "transactionHash": "0xb9fcf436bccd3e1b60988793c2591109b04f9d68f044a5c8f307d5502dd9a1df"
     }
   },
   "schemaVersion": "3.1.0",
-  "updatedAt": "2020-05-28T18:51:50.429Z",
+  "updatedAt": "2020-06-01T19:50:55.713Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

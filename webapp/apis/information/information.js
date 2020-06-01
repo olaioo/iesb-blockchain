@@ -283,6 +283,59 @@ module.exports = {
             }
         }
     },
+    setAvailableDataToAll: async function(req, res) {
+
+        if (!req.session.username) {
+            res.redirect('/');
+            res.end();
+        } else {
+            console.log("*** informationApi -> setAvailableDataToAll ***");
+
+            let userAddr = req.session.address;
+            let pass     = req.session.password;
+
+            try {
+                let accountUnlocked = await web3.eth.personal.unlockAccount(userAddr, pass, null)
+                if (accountUnlocked) {
+
+                    let privateData = await MyContract.methods.getPrivateData()
+                        .call({ from: userAddr, gas: 3000000 });
+                    privateData = new NodeRSA(myKey.privateKey).decrypt(privateData, 'utf8');
+                    privateData = JSON.parse(privateData);
+
+                    let appInfos = await MyContract.methods.getAppInfos()
+                        .call({ from: userAddr, gas: 3000000});
+
+                    let _appPublicKeys = [];
+                    let encryptedDatas = [];
+                    for (i = 0; i < appInfos['0'].length; i++) {
+                        let availableData = {};
+                        let requiredData = appInfos['2'][i];
+                        for(let i = 0; i < requiredData.length; i++){
+                            availableData[requiredData[i]] = privateData[requiredData[i]];
+                        }
+                        _appPublicKeys.push(appInfos['0'][i]);
+                        encryptedDatas.push(new NodeRSA(appInfos['0'][i], 'public').encrypt(availableData, 'base64'));
+                    }
+
+                    console.log(_appPublicKeys);
+                    console.log(encryptedDatas);
+                    await MyContract.methods.setAvailableDateToAll(_appPublicKeys, encryptedDatas)
+                        .send({ from: userAddr, gas: 3000000 })
+                        .then(function(result) {
+                            console.log(result);
+                            return res.send({ 'error': false, 'msg': 'Informações atualizadas com sucesso.'});  
+                        })
+                        .catch(function(err) {
+                            console.log(err);
+                            return res.send({ 'error': true, 'msg': 'Erro ao comunicar com o contrato.'});
+                        })
+                } 
+            } catch (err) {
+                return res.send({ 'error': true, 'msg': 'Erro ao desbloquear sua conta. Por favor, tente novamente mais tarde.', err});
+            }
+        }
+    },
     decodeData: async (req, res) => {
         let encryptedData = req.body.encryptedData;
         let privateKey = req.body.privateKey;

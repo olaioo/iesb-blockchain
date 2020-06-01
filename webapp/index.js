@@ -42,6 +42,7 @@ app.post("/updateInformation", information.updateInformation);
 app.post("/addNewAppInfo", information.addNewAppInfo);
 app.post("/eraseDataTo", information.eraseDataTo);
 app.post("/setAvailableData", information.setAvailableDataTo);
+app.post("/setAvailableDataToAll", information.setAvailableDataToAll);
 app.post("/decodeData", information.decodeData);
 
 const PORT = process.env.PORT || 3000;

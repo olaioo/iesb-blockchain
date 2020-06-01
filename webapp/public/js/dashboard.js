@@ -1,9 +1,34 @@
 
 window.addEventListener("load", function() {
 
+    // restaga formulário de produtos
+    let form = document.getElementById("updateInfoToAllApps");
+
+    // adiciona uma função para
+    // fazer o login quando o 
+    // formulário for submetido
+    form.addEventListener('submit', updateInfoToAllApps);
+
     // função para carregar plubic keys app
     getAppInfos();
 })
+
+function updateInfoToAllApps(event) {
+    event.preventDefault();
+    $.post("/setAvailableDataToAll", function(res) {
+    
+        console.log(res);
+        // verifica resposta do servidor
+        if (!res.error) {
+            console.log("*** Views -> js -> information.js -> setAvailableDataToAll: ***", res.msg);            
+            alert("Os dados foram atualizados para todos os APPs.");
+            window.location.href = "/api/auth/dashboard";
+        } else {
+            alert("Erro ao remover informações. Por favor, tente novamente mais tarde. " + res.msg);
+        }
+
+    });
+}
 
 function setAvailableData(pk) {
     $.post("/setAvailableData", {pk}, function(res) {

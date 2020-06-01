@@ -80,9 +80,17 @@ contract MyContract is Ownable {
         AppInfo storage ai = appInfos[appPublicKey];
         ai.availableData = encryptedData;
     }
+
+    function setAvailableDateToAll(string[] memory _appPublicKeys, string[] memory encryptedDatas) public onlyOwner {
+        require(_appPublicKeys.length == encryptedDatas.length, "Encrypted datas array with wrong length");
+        for (uint i = 0; i < _appPublicKeys.length; i++){
+            AppInfo storage ai = appInfos[_appPublicKeys[i]];
+            ai.availableData = encryptedDatas[i];
+        }
+    }
     
     function findAppPublicKey(string memory appPublicKey) private view returns (int256){
-        for (uint i=0; i<appPublicKeys.length; i++){
+        for (uint i = 0; i < appPublicKeys.length; i++){
             if(equal(appPublicKeys[i], appPublicKey)){
                 return int(i);
             }
