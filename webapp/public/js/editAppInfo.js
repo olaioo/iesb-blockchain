@@ -62,6 +62,13 @@ function updateAppInfo(event) {
         requiredData.push($(this).val());
     });
 
+    // checa se pelos menos umas das opções foram escolhidas
+    if(requiredData.length <= 0){
+        alert("Selecione pelo menos uma das opções: Email ou Telefone");
+        $(":submit").removeAttr("disabled");
+        return;
+    }
+
     // envia a requisição para o servidor
     $.post("/addNewAppInfo", {pk: appPk, name, requiredData}, function(res) {
         
