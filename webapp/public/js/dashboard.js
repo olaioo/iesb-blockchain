@@ -1,13 +1,15 @@
 
 window.addEventListener("load", function() {
 
-    // restaga formulário de produtos
+    // restaga formulário de dashboard
     let form = document.getElementById("updateInfoToAllApps");
+    let form2 = document.getElementById("removeAllApps");
 
     // adiciona uma função para
     // fazer o login quando o 
     // formulário for submetido
     form.addEventListener('submit', updateInfoToAllApps);
+    form2.addEventListener('submit', removeAllApps);
 
     // função para carregar plubic keys app
     getAppInfos();
@@ -22,6 +24,23 @@ function updateInfoToAllApps(event) {
         if (!res.error) {
             console.log("*** Views -> js -> information.js -> setAvailableDataToAll: ***", res.msg);            
             alert("Os dados foram atualizados para todos os APPs.");
+            window.location.href = "/api/auth/dashboard";
+        } else {
+            alert("Erro ao remover informações. Por favor, tente novamente mais tarde. " + res.msg);
+        }
+
+    });
+}
+
+function removeAllApps(event) {
+    event.preventDefault();
+    $.post("/eraseDataToAll", function(res) {
+    
+        console.log(res);
+        // verifica resposta do servidor
+        if (!res.error) {
+            console.log("*** Views -> js -> information.js -> eraseDataToAll: ***", res.msg);            
+            alert("Todos os dados foram removifos com sucesso!");
             window.location.href = "/api/auth/dashboard";
         } else {
             alert("Erro ao remover informações. Por favor, tente novamente mais tarde. " + res.msg);

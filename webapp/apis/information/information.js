@@ -234,6 +234,37 @@ module.exports = {
             }
         }
     },
+    eraseDataToAll: async function(req, res) {
+
+        if (!req.session.username) {
+            res.redirect('/');
+            res.end();
+        } else {
+            console.log("*** informationApi -> eraseDataToAll ***");
+
+            let userAddr = req.session.address;
+            let pass     = req.session.password;
+
+            try {
+                let accountUnlocked = await web3.eth.personal.unlockAccount(userAddr, pass, null)
+                if (accountUnlocked) {
+
+                    await MyContract.methods.eraseDataToAll()
+                        .send({ from: userAddr, gas: 3000000 })
+                        .then(function(result) {
+                            console.log(result);
+                            return res.send({ 'error': false, 'msg': 'Todoas Informações removidas com sucesso.'});  
+                        })
+                        .catch(function(err) {
+                            console.log(err);
+                            return res.send({ 'error': true, 'msg': 'Erro ao comunicar com o contrato.'});
+                        })
+                } 
+            } catch (err) {
+                return res.send({ 'error': true, 'msg': 'Erro ao desbloquear sua conta. Por favor, tente novamente mais tarde.'});
+            }
+        }
+    },
     setAvailableDataTo: async function(req, res) {
 
         if (!req.session.username) {

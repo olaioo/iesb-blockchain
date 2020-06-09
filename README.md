@@ -68,3 +68,57 @@ Dentro da pasta webapp <br>
 Para fazer login: <br>
 user: user <br>
 senha: user<br>
+
+### Guideline de funcionalidades 
+
+Cadastro de informação privada
+
+    Permite cadastrar informações privadas, nesse caso, apenas email e telefone de contato.
+    
+    Função do contrato: updatePrivateData(string memory newPrivateData)
+
+Edição de informação privada
+
+    Permite editar as informações privades inseridas pelo 'Cadastro de informação privada'.
+
+    Função do contrato: updatePrivateData(string memory newPrivateData)
+
+Adicionar APP
+    
+    Permite adicionar um aplicativo com chave publica (fornecida pelo app, com intuito de cifrar as informações disponíveis para ele), nome do app, e infomações requeridas pelo app.
+
+    Funçao do contrato: setAppInfo(string memory appPublicKey, string memory name, string[] memory arrRequiredData)
+
+Editar APP
+
+    Permite editar as informações fornecidades pelo 'Adicionar APP', excluinda apenas a public key, essa não pode ser editada.
+
+    Função do contrato: setAppInfo(string memory appPublicKey, string memory name, string[] memory arrRequiredData)
+
+Disponibilizar informação privada (Individual)
+
+    Permite disponibilizar todas as informações privadas cadastradas que o app está requerindo.
+
+    Função do contrato: setAvailableDataTo(string memory appPublicKey, string memory encryptedData)
+
+Disponibilizar informação privada (Global)
+
+    De maneira semelhante a 'Disponibilizar informação privada', disponibiliza para todos os apps cadastrados as informações que cada um requisitou, com os dados de informação privada cadastrados.
+
+    Função do contrato: setAvailableDateToAll(string[] memory _appPublicKeys, string[] memory encryptedDatas)
+
+Remover APP
+
+    Permite excluir completamente os dados de cadastro e dados fornecidados para um determinado app.
+
+    Função do contrato: eraseDataTo(string memory appPublicKey)
+
+Remover Todos APPs
+
+    De maneira semelhanta a 'Remover APP', permite excluir completamente os dados de cadastro e dados fornecidos para todos os apps cadastrados.
+
+    Função do contrato: eraseDataToAll()
+
+Visualizar informação disponibilizada
+
+    Permite verificar a informação disponibilizada para cada app crifrada, como também permite decifrar a informação disponibilizada.

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-" crossorigin="anonymous">
 
-    <title>PoA Dapp</title>
+    <title>Info Dapp</title>
     <script src="https://kit.fontawesome.com/23da8b8ca5.js"></script>
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
@@ -47,10 +47,17 @@
 
             <div class="content" style="margin-top: 5%">
                 <div class="row">
-                    <div class="col-md-5" style="display: flex; padding-bottom: 5px;">
+                    <div class="col-md-12" style="padding-bottom: 5px;">
+                        <div style="float: left;">
                         <form id="updateInfoToAllApps">
-                            <button id="load" type="submit" class="btn btn-primary btn-block">Atualizar Todos</button>
+                            <button id="load" type="submit" onclick="if (! confirm('Confirma a atualização de todos Apps?')) { return false }" class="btn btn-primary btn-block">Atualizar Todos</button>
                         </form>
+                        </div>
+                        <div style="float: right;">
+                        <form id="removeAllApps">
+                            <button id="load" type="submit" onclick="if (! confirm('Confirma a remoção de todos Apps?')) { return false }" class="btn btn-danger btn-block">Remover Todos</button>
+                        </form>
+                        </div>
                     </div>
                 </div>
                 <div class="row justify-content-center">

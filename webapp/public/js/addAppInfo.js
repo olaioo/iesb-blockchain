@@ -40,7 +40,10 @@ function addAppInfo(event) {
     $.post("/AppInfo", {id: pk}, function(res){
         if(!res.error){
             let appInfo = res.app;
-            if(appInfo.pk === pk){
+            console.log("name:"+appInfo.name);
+            if(appInfo.name !== null 
+                && appInfo.name !== ""
+                && appInfo.pk === pk){
                 alert("App public key já existe!");
                 $(":submit").removeAttr("disabled");
                 return;
@@ -68,7 +71,7 @@ function addAppInfo(event) {
                 });
             }
         }else{
-            alert("Erro ao cadastrar APP. Por favor, tente novamente mais tarde. " + res.msg);
+            alert("Erro ao cadastrar APP. Por favor, tente novamente mais tarde. ", res.msg);
         }
     });
 }

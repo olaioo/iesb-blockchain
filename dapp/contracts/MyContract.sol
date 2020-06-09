@@ -27,8 +27,6 @@ contract MyContract is Ownable {
             string[] memory,
             string memory
         ) {
-            require(findAppPublicKey(appPublicKey) != -1, "App public key does not exist");
-
             AppInfo memory ai = appInfos[appPublicKey];
             
             return (
@@ -60,6 +58,13 @@ contract MyContract is Ownable {
         require(findAppPublicKey(appPublicKey) != -1, "App public key does not exist");
         delete appInfos[appPublicKey];
         removeAppPublicKey(appPublicKey);
+    }
+    
+    function eraseDataToAll() public onlyOwner {
+        while(appPublicKeys.length > 0){
+            delete appInfos[appPublicKeys[0]];
+            removeAppPublicKey(appPublicKeys[0]);
+        }
     }
     
     function setAppInfo(string memory appPublicKey, string memory name, string[] memory arrRequiredData) public onlyOwner {
