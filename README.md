@@ -73,52 +73,96 @@ senha: user<br>
 
 Cadastro de informação privada
 
-    Permite cadastrar informações privadas, nesse caso, apenas email e telefone de contato.
-    
-    Função do contrato: updatePrivateData(string memory newPrivateData)
+<ol>
+    <li>
+        Permite cadastrar informações privadas, nesse caso, apenas email e telefone de contato.
+    </lin>
+    <li>
+        Função do contrato: updatePrivateData(string memory newPrivateData)
+    </li>
+</ol>
 
 Edição de informação privada
 
-    Permite editar as informações privades inseridas pelo 'Cadastro de informação privada'.
-
-    Função do contrato: updatePrivateData(string memory newPrivateData)
+<ol>
+    <li>
+        Permite editar as informações privades inseridas pelo 'Cadastro de informação privada'.
+    </li>
+    <li>
+        Função do contrato: updatePrivateData(string memory newPrivateData)
+    </li>
+</ol>
 
 Adicionar APP
-    
-    Permite adicionar um aplicativo com chave publica (fornecida pelo app, com intuito de cifrar as informações disponíveis para ele), nome do app, e infomações requeridas pelo app.
 
-    Funçao do contrato: setAppInfo(string memory appPublicKey, string memory name, string[] memory arrRequiredData)
+<ol>    
+    <li>
+        Permite adicionar um aplicativo com chave publica (fornecida pelo app, com intuito de cifrar as informações disponíveis para ele), nome do app, e infomações requeridas pelo app.
+    </li>
+    <li>
+        Funçao do contrato: setAppInfo(string memory appPublicKey, string memory name, string[] memory arrRequiredData)
+    </li>
+</ol>
 
 Editar APP
 
-    Permite editar as informações fornecidades pelo 'Adicionar APP', excluinda apenas a public key, essa não pode ser editada.
-
-    Função do contrato: setAppInfo(string memory appPublicKey, string memory name, string[] memory arrRequiredData)
+<ol>
+    <li>
+        Permite editar as informações fornecidades pelo 'Adicionar APP', excluinda apenas a public key, essa não pode ser editada.
+    </li>
+    <li>
+        Função do contrato: setAppInfo(string memory appPublicKey, string memory name, string[] memory arrRequiredData)
+    </li>
+</ol>
 
 Disponibilizar informação privada (Individual)
 
-    Permite disponibilizar todas as informações privadas cadastradas que o app está requerindo.
-
-    Função do contrato: setAvailableDataTo(string memory appPublicKey, string memory encryptedData)
+<ol>
+    <li>
+        Permite disponibilizar todas as informações privadas cadastradas que o app está requerindo.
+    </li>
+    <li>
+        Função do contrato: setAvailableDataTo(string memory appPublicKey, string memory encryptedData)
+    </li>
+</ol>
 
 Disponibilizar informação privada (Global)
 
-    De maneira semelhante a 'Disponibilizar informação privada', disponibiliza para todos os apps cadastrados as informações que cada um requisitou, com os dados de informação privada cadastrados.
-
-    Função do contrato: setAvailableDateToAll(string[] memory _appPublicKeys, string[] memory encryptedDatas)
+<ol>
+    <li>
+        De maneira semelhante a 'Disponibilizar informação privada', disponibiliza para todos os apps cadastrados as informações que cada um requisitou, com os dados de informação privada cadastrados.
+    </li>
+    <li>
+        Função do contrato: setAvailableDateToAll(string[] memory _appPublicKeys, string[] memory encryptedDatas)
+    </li>
+</ol>
 
 Remover APP
 
+<ol>
+    <li>
     Permite excluir completamente os dados de cadastro e dados fornecidados para um determinado app.
-
+    </li>
+    <li>
     Função do contrato: eraseDataTo(string memory appPublicKey)
+    </li>
+</ol>
 
 Remover Todos APPs
 
-    De maneira semelhanta a 'Remover APP', permite excluir completamente os dados de cadastro e dados fornecidos para todos os apps cadastrados.
-
-    Função do contrato: eraseDataToAll()
+<ol>
+    <li>
+        De maneira semelhanta a 'Remover APP', permite excluir completamente os dados de cadastro e dados fornecidos para todos os apps cadastrados.
+    </li>
+    <li>
+        Função do contrato: eraseDataToAll()
+    </li>
+</ol>
 
 Visualizar informação disponibilizada
 
-    Permite verificar a informação disponibilizada para cada app crifrada, como também permite decifrar a informação disponibilizada.
+<ol>
+    <li>
+        Permite verificar a informação disponibilizada para cada app crifrada, como também permite decifrar a informação disponibilizada.
+    </li>
+</ol>
